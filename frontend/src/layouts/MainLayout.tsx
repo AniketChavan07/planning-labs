@@ -8,17 +8,29 @@ import FloatingContact from '../components/ui/FloatingContact';
 import ScrollToTop from '../components/ui/ScrollToTop';
 
 const pageVariants = {
-  initial: { opacity: 0, y: 24, filter: 'blur(6px)' },
+  initial: {
+    opacity: 0,
+    y: 24,
+    filter: 'blur(6px)',
+  },
+
   enter: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   },
+
   exit: {
     opacity: 0,
     y: -16,
     filter: 'blur(4px)',
-    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.3,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   },
 };
 
