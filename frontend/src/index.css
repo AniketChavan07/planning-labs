@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+    cursor: none; /* hide native cursor — custom cursor takes over */
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-foreground selection:text-background;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+
+  /* Accessibility: Visible focus rings for keyboard navigation */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-accent-dark ring-offset-2 ring-offset-background;
+  }
+
+  /* Show native cursor on touch devices */
+  @media (pointer: coarse) {
+    html { cursor: auto; }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .glass {
+    @apply bg-neutral-900/40 backdrop-blur-md border border-neutral-800/50;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent-light;
+  }
+  /* Fluid typography — no media queries needed */
+  .text-fluid-xl  { font-size: clamp(2rem,    5vw, 3.5rem); }
+  .text-fluid-2xl { font-size: clamp(2.5rem,  7vw, 5rem);   }
+  .text-fluid-3xl { font-size: clamp(3rem,    9vw, 7rem);   }
+  .text-fluid-4xl { font-size: clamp(3.5rem, 11vw, 9rem);   }
+  /* Shimmer effect */
+  .shimmer {
+    background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.08) 50%, transparent 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2.5s infinite;
+  }
+  /* Glow */
+  .glow-accent    { box-shadow: 0 0 40px rgba(124, 58, 237, 0.35); }
+  .glow-accent-sm { box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);  }
+  /* Animated gradient border */
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(var(--background), var(--background)) padding-box,
+                linear-gradient(135deg, #7C3AED, #2563EB, #7C3AED) border-box;
+    border: 2px solid transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+  }
+  /* Safe horizontal padding for all sections */
+  .section-px { @apply px-4 sm:px-6 lg:px-8; }
+}
+
+/* === Global Keyframes === */
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes floatX {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.3); }
+  50% { box-shadow: 0 0 50px rgba(124, 58, 237, 0.7), 0 0 100px rgba(124, 58, 237, 0.2); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marqueeReverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes wipe {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0% 0 0); }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideUpFade {
+  from { transform: translateY(30px); opacity: 0; filter: blur(6px); }
+  to { transform: translateY(0); opacity: 1; filter: blur(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* === Animation utility classes === */
+.animate-float { animation: floatY 5s ease-in-out infinite; }
+.animate-float-x { animation: floatX 6s ease-in-out infinite; }
+.animate-spin-slow { animation: spinSlow 20s linear infinite; }
+.animate-pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+.animate-marquee { animation: marquee var(--marquee-duration, 30s) linear infinite; }
+.animate-marquee-reverse { animation: marqueeReverse var(--marquee-duration, 30s) linear infinite; }
+.animate-wipe { animation: wipe 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-scale-in { animation: scaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-slide-up { animation: slideUpFade 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-fade { animation: fadeIn 0.6s ease both; }
+
+/* === Hover effects === */
+.hover-lift {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.hover-scale {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hover-scale:hover { transform: scale(1.03); }
+
+/* Card with gradient border on hover */
+.card-glow {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.card-glow:hover {
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.15), 0 20px 60px rgba(0,0,0,0.5);
+  transform: translateY(-4px);
+}
+
+/* Underline wipe on hover */
+.underline-wipe {
+  position: relative;
+}
+.underline-wipe::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.underline-wipe:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Image zoom on hover */
+.img-zoom img,
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img,
+.img-zoom > img {
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.img-zoom:hover img,
+.img-zoom:hover > img {
+  transform: scale(1.07);
+}
+
+/* Accessibility: Respect system motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+    cursor: auto !important;
+  }
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
