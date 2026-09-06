@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Search, ChevronDown, ArrowUpRight } from 'lucide-react';
 import SearchOverlay from './SearchOverlay';
+import BrandLogo from '../ui/BrandLogo';
 
 const experientialLinks = [
   {
@@ -131,14 +132,9 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <div className="flex-shrink-0">
-              <Link to="/" className={`flex items-center gap-2.5 font-display font-bold text-2xl tracking-tighter ${textColor}`}>
-                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-accent">
-                  <rect width="32" height="32" rx="8" fill="currentColor" />
-                  <path d="M10 11H15.5C17.9853 11 20 13.0147 20 15.5C20 17.9853 17.9853 20 15.5 20H13.5V23" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M22 23H15" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                PLANNING LABS
+            <div className="flex-shrink-0 flex items-center">
+              <Link to="/" className="block">
+                <BrandLogo className="text-3xl" />
               </Link>
             </div>
 

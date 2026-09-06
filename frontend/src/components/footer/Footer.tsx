@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import BrandLogo from '../ui/BrandLogo';
 
 const services = [
   { name: 'Experiential Marketing', path: '/experiential-marketing' },
@@ -92,13 +93,8 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="md:col-span-4">
-            <Link to="/" className="flex items-center gap-2.5 font-display font-black text-2xl tracking-tighter text-foreground mb-5">
-              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-accent">
-                <rect width="32" height="32" rx="8" fill="currentColor" />
-                <path d="M10 11H15.5C17.9853 11 20 13.0147 20 15.5C20 17.9853 17.9853 20 15.5 20H13.5V23" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M22 23H15" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              PLANNING LABS
+            <Link to="/" className="inline-block mb-6">
+              <BrandLogo className="text-4xl" />
             </Link>
             <p className="text-neutral-500 text-sm leading-relaxed mb-8 max-w-xs">
               A hybrid agency bridging immersive experiential marketing with data-driven digital growth — for brands that refuse to be ignored.
