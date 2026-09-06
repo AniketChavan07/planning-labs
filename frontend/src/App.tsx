@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
-import Experiential from './pages/Experiential';
 import Digital from './pages/Digital';
 import OurWork from './pages/OurWork';
 import ProjectDetail from './pages/ProjectDetail';
