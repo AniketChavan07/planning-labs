@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Zap, Target, Palette, TrendingUp, MonitorSmartphone, Trophy } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 const experientialServices = [
   { name: 'Events', path: '/experiential/events', icon: '🎪' },
@@ -94,11 +94,10 @@ export default function ServicesOverview() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(i)}
-                className={`relative px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${
-                  activeTab === i
+                className={`relative px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${activeTab === i
                     ? 'text-white shadow-lg'
                     : 'text-neutral-400 hover:text-white'
-                }`}
+                  }`}
               >
                 {activeTab === i && (
                   <motion.div

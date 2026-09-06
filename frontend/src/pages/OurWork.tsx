@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, MapPin, Calendar, Users, TrendingUp, Star, CheckCircle2 } from 'lucide-react';
@@ -123,7 +123,7 @@ function ShowcasePanel({ item }: { item: typeof showcases[0] }) {
       <div className={`flex flex-col justify-center p-8 lg:p-12 ${item.flip ? 'lg:order-1' : 'lg:order-2'}`}>
         {/* Client */}
         <div className="flex items-center gap-3 mb-8">
-          <div 
+          <div
             className="h-10 w-10 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg border border-white/10"
             style={{ backgroundColor: item.accent }}
           >
@@ -253,8 +253,8 @@ export default function OurWork() {
           </motion.h2>
         </div>
 
-        {showcases.map((item, index) => (
-          <ShowcasePanel key={item.id} item={item} index={index} />
+        {showcases.map((item) => (
+          <ShowcasePanel key={item.id} item={item} />
         ))}
       </div>
 
@@ -272,8 +272,8 @@ export default function OurWork() {
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
                 className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 border ${activeFilter === filter
-                    ? 'bg-accent text-white border-accent shadow-lg shadow-accent/30'
-                    : 'bg-transparent text-neutral-400 border-neutral-700 hover:border-neutral-400 hover:text-foreground'
+                  ? 'bg-accent text-white border-accent shadow-lg shadow-accent/30'
+                  : 'bg-transparent text-neutral-400 border-neutral-700 hover:border-neutral-400 hover:text-foreground'
                   }`}
               >
                 {filter}
