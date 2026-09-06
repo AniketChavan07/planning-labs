@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, MapPin, Play, Pause, Calendar, Users, TrendingUp, Star, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight, MapPin, Calendar, Users, TrendingUp, Star, CheckCircle2 } from 'lucide-react';
 import SEO from '../components/seo/SEO';
 import { projects } from '../data/projects';
 
@@ -78,21 +78,7 @@ const showcases = [
   },
 ];
 
-function ShowcasePanel({ item, index }: { item: typeof showcases[0]; index: number }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
-
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (playing) {
-      videoRef.current.pause();
-      setPlaying(false);
-    } else {
-      videoRef.current.play();
-      setPlaying(true);
-    }
-  };
-
+function ShowcasePanel({ item }: { item: typeof showcases[0] }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 60 }}
@@ -110,14 +96,7 @@ function ShowcasePanel({ item, index }: { item: typeof showcases[0]; index: numb
           className="absolute inset-0 w-full h-full object-cover"
         />
         {/* Video overlay (shown when playing) */}
-        <video
-          ref={videoRef}
-          src={item.video}
-          loop
-          muted
-          playsInline
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${playing ? 'opacity-100' : 'opacity-0'}`}
-        />
+
         {/* Dark gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
