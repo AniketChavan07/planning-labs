@@ -153,7 +153,6 @@ export default function Careers() {
             {filtered.map((job) => (
               <motion.div
                 key={job.id}
-                layout
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="border border-neutral-800 rounded-2xl overflow-hidden hover:border-neutral-600 transition-colors"

@@ -38,7 +38,7 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="experiential-marketing" element={<Experiential />} />
+          {/* <Route path="experiential-marketing" element={<Experiential />} /> */}
           <Route path="digital-marketing" element={<Digital />} />
 
           {/* Experiential Marketing sub-routes */}

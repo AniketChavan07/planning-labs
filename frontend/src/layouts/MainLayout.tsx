@@ -11,7 +11,6 @@ const pageVariants = {
   initial: {
     opacity: 0,
     y: 24,
-    filter: 'blur(6px)',
   },
 
   enter: {
@@ -26,7 +25,6 @@ const pageVariants = {
   exit: {
     opacity: 0,
     y: -16,
-    filter: 'blur(4px)',
     transition: {
       duration: 0.3,
       ease: [0.22, 1, 0.36, 1] as const,
@@ -48,7 +46,7 @@ export default function MainLayout() {
       <Header />
 
       <main className="flex-grow pt-20">
-        <AnimatePresence mode="wait" initial={false}>
+        <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
             variants={pageVariants}

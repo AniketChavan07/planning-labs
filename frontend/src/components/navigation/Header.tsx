@@ -176,12 +176,6 @@ export default function Header() {
                           <p className="font-display font-bold text-base text-neutral-900">Experiential Marketing</p>
                           <p className="text-neutral-500 text-xs mt-0.5">Immersive experiences that move audiences</p>
                         </div>
-                        <Link
-                          to="/experiential-marketing"
-                          className="inline-flex items-center gap-1.5 text-accent text-xs font-semibold hover:underline"
-                        >
-                          View All <ArrowUpRight size={12} />
-                        </Link>
                       </div>
 
                       {/* Links Grid */}
@@ -249,9 +243,6 @@ export default function Header() {
                           <p className="font-display font-bold text-base text-neutral-900">Digital Marketing</p>
                           <p className="text-neutral-500 text-xs mt-0.5">Data-driven digital growth for modern brands</p>
                         </div>
-                        <Link to="/digital-marketing" className="inline-flex items-center gap-1.5 text-accent text-xs font-semibold hover:underline">
-                          View All <ArrowUpRight size={12} />
-                        </Link>
                       </div>
                       <div className="grid grid-cols-2 gap-1 p-3">
                         {digitalLinks.map((item) => (
@@ -339,125 +330,130 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Fullscreen Mobile Menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: '-100%' }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: '-100%' }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed inset-0 z-[60] bg-foreground text-background flex flex-col overflow-y-auto"
-            >
-              <div className="flex items-center justify-between p-6">
-                <Link to="/" className="font-display font-bold text-2xl tracking-tighter text-background" onClick={() => setMobileMenuOpen(false)}>
-                  PLANNING LABS
-                </Link>
-                <button onClick={() => setMobileMenuOpen(false)} className="p-2 text-background hover:text-accent transition-colors">
-                  <X size={28} />
-                </button>
-              </div>
-
-              <div className="flex-1 flex flex-col justify-center p-8 space-y-2">
-                {/* Experiential accordion */}
-                <div>
-                  <button
-                    onClick={() => setMobileExpOpen(v => !v)}
-                    className="flex items-center gap-3 font-display text-3xl font-bold text-background hover:text-accent transition-colors w-full text-left py-3"
-                  >
-                    Experiential
-                    <motion.span animate={{ rotate: mobileExpOpen ? 180 : 0 }}>
-                      <ChevronDown size={24} />
-                    </motion.span>
-                  </button>
-                  <AnimatePresence>
-                    {mobileExpOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden pl-4 space-y-1 pb-2"
-                      >
-                        {experientialLinks.map((item) => (
-                          <Link
-                            key={item.path}
-                            to={item.path}
-                            className="flex items-center gap-3 py-2 text-lg text-background/70 hover:text-accent transition-colors"
-                          >
-                            <span>{item.icon}</span>
-                            {item.name}
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Digital accordion */}
-                <div>
-                  <button
-                    onClick={() => setMobileDigitalOpen(v => !v)}
-                    className="flex items-center gap-3 font-display text-3xl font-bold text-background hover:text-accent transition-colors w-full text-left py-3"
-                  >
-                    Digital
-                    <motion.span animate={{ rotate: mobileDigitalOpen ? 180 : 0 }}>
-                      <ChevronDown size={24} />
-                    </motion.span>
-                  </button>
-                  <AnimatePresence>
-                    {mobileDigitalOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden pl-4 space-y-1 pb-2"
-                      >
-                        {digitalLinks.map((item) => (
-                          <Link
-                            key={item.path}
-                            to={item.path}
-                            className="flex items-center gap-3 py-2 text-lg text-background/70 hover:text-accent transition-colors"
-                          >
-                            <span>{item.icon}</span>
-                            {item.name}
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {navLinks.map((link, i) => (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 + 0.2 }}
-                  >
-                    <Link
-                      to={link.path}
-                      className="block font-display text-3xl font-bold py-3 hover:text-accent transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </motion.div>
-                ))}
-
-                <div className="pt-8">
-                  <Link
-                    to="/contact"
-                    className="bg-background text-foreground hover:bg-accent hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 inline-block"
-                  >
-                    Let's Talk
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </header>
+
+      {/* Fullscreen Mobile Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: '-100%' }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: '-100%' }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[60] bg-foreground text-background flex flex-col overflow-y-auto"
+          >
+            <div className="flex items-center justify-between p-6">
+              <Link to="/" className="font-display font-bold text-2xl tracking-tighter text-background" onClick={() => setMobileMenuOpen(false)}>
+                PLANNING LABS
+              </Link>
+              <button onClick={() => setMobileMenuOpen(false)} className="p-2 text-background hover:text-accent transition-colors">
+                <X size={28} />
+              </button>
+            </div>
+
+            <div className="flex-1 flex flex-col justify-center p-8 space-y-2">
+              {/* Experiential accordion */}
+              <div>
+                <button
+                  onClick={() => setMobileExpOpen(v => !v)}
+                  className="flex items-center gap-3 font-display text-3xl font-bold text-background hover:text-accent transition-colors w-full text-left py-3"
+                >
+                  Experiential
+                  <motion.span animate={{ rotate: mobileExpOpen ? 180 : 0 }}>
+                    <ChevronDown size={24} />
+                  </motion.span>
+                </button>
+                <AnimatePresence>
+                  {mobileExpOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden pl-4 space-y-1 pb-2"
+                    >
+                      {experientialLinks.map((item) => (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="flex items-center gap-3 py-2 text-lg text-background/70 hover:text-accent transition-colors"
+                        >
+                          <span>{item.icon}</span>
+                          {item.name}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Digital accordion */}
+              <div>
+                <button
+                  onClick={() => setMobileDigitalOpen(v => !v)}
+                  className="flex items-center gap-3 font-display text-3xl font-bold text-background hover:text-accent transition-colors w-full text-left py-3"
+                >
+                  Digital
+                  <motion.span animate={{ rotate: mobileDigitalOpen ? 180 : 0 }}>
+                    <ChevronDown size={24} />
+                  </motion.span>
+                </button>
+                <AnimatePresence>
+                  {mobileDigitalOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden pl-4 space-y-1 pb-2"
+                    >
+                      {digitalLinks.map((item) => (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="flex items-center gap-3 py-2 text-lg text-background/70 hover:text-accent transition-colors"
+                        >
+                          <span>{item.icon}</span>
+                          {item.name}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 + 0.2 }}
+                >
+                  <Link
+                    to={link.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block font-display text-3xl font-bold py-3 hover:text-accent transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+
+              <div className="pt-8">
+                <Link
+                  to="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="bg-background text-foreground hover:bg-accent hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 inline-block"
+                >
+                  Let's Talk
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </>

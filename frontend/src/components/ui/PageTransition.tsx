@@ -5,13 +5,11 @@ const variants = {
   initial: {
     opacity: 0,
     y: 30,
-    filter: 'blur(8px)',
   },
 
   enter: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
     transition: {
       duration: 0.55,
       ease: [0.22, 1, 0.36, 1] as const,
@@ -21,7 +19,6 @@ const variants = {
   exit: {
     opacity: 0,
     y: -20,
-    filter: 'blur(4px)',
     transition: {
       duration: 0.3,
       ease: [0.22, 1, 0.36, 1] as const,
@@ -37,7 +34,7 @@ export default function PageTransition({
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence mode="wait">
       <motion.div
         key={location.pathname}
         variants={variants}
