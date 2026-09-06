@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 const row1Images = [
   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=320&q=80",

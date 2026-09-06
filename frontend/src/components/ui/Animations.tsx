@@ -159,11 +159,9 @@ export function StaggerItem({
 export function MagneticHover({
   children,
   className = '',
-  strength = 0.3,
 }: {
   children: React.ReactNode;
   className?: string;
-  strength?: number;
 }) {
   return (
     <motion.div
